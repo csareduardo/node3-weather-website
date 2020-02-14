@@ -2,7 +2,7 @@ const request = require('request');
 
 const forecast = function (latitude, longitude, callback) {
     const url = 'https://api.darksky.net/forecast/5e6892c502afcf934e8095649823ad8a/'
-        + latitude + ',' + longitude;
+        + latitude + ',' + longitude + '?units=si';
 
     request({ url, 'json': true }, (error, response) => {
          const {
@@ -23,12 +23,15 @@ const forecast = function (latitude, longitude, callback) {
                     },
                     daily:{
                         data: [{
-                            summary
+                            summary,
+                            temperatureHigh,
+                            temperatureLow
                         }]
                     }
                 }
             } = response;
-            callback(undefined, summary + ' It is currently ' + temperature + ' degress out. There is a ' + precipProbability + '% chance of rain.');
+            callback(undefined, summary + ' It is currently ' + temperature + ' degress out. The high temperature today is ' + temperatureHigh
+                + ' and low temperature is ' + temperatureLow  + '. There is a ' + precipProbability + '% chance of rain.');
         }
     });  
 };
