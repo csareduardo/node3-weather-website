@@ -28,11 +28,7 @@ const forecast = function (latitude, longitude, callback) {
                     }
                 }
             } = response;
-            callback(undefined, {
-                summary,
-                temperature,
-                precipProbability
-            });
+            callback(undefined, summary + ' It is currently ' + temperature + ' degress out. There is a ' + precipProbability + '% chance of rain.');
         }
     });  
 };
