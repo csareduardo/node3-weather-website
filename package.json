@@ -17,6 +17,7 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
+    "minimist": "^1.2.5",
     "nodemon": "^2.0.2"
   }
 }
